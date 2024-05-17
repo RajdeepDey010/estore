@@ -1,0 +1,26 @@
+@import '../../style/sass/variables';
+@import '../../style/sass/mixins';
+
+.cat-nav-container {
+    background-color: #1e1e1e;
+    max-width: 100%;
+    border-top: 2px solid #444444;
+
+    .list-items {
+        list-style-type: none;
+        display: inline-block;
+        margin: 0.2em 1em;
+        padding: 0.4em;
+        height: 2.5em;
+
+        a {
+            text-decoration: none;
+            color: white;
+            height: 1.8em;
+            font-size: 0.8em;
+            font-weight: 700;
+
+            @include underline-transition(1.1);
+        }
+    }
+}

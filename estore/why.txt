@@ -1,0 +1,18 @@
+goal: sde in the faang
+A thorough understanding of building a fullstack project to build it MYSELF without help.
+Everytime take 25min before lecture video to implment a functionality by myself.After 25min follow lecture.
+--------------------------------------------------------------------------------------------------------------------------------
+
+[25.04.24]Process to build the side-nav accordion:
+    - lets integrate bootstrap support of javascript in our file to enable usage of bootstrap toggle or collapse features.So import the cdn link for javascript from bootstrap.com
+    - first the button that we used onclicking of which the collapse feature needs to happen will have the "data-bs-toggle=collapse" and it will make it toggle-able.
+    - second on this button only we have to assign id(accordion-heading-one) of the div that needs to be collapsed to "data-bs-target".
+    - third we give the id(accordion-heading-one) to the div which needs to be collapsed.
+
+Process to include the cat-nav transitions into mixin to make it global accessible to apply on accordion:
+    - Make a mixin named underline-tranisition($width) in _mixins.scss. Here $width is to specify the parameter we want to apply to the transform scaleX().
+    - Use it in the _cat-nav.scss by including it.Use the syntax "@include" followed by the mixin name "underline-tranisition(1.1)".Here 1.1 is the value of the transition line which is passed to the transform attribute.
+    - Now similarly include it to the accordion.Inside a{} apply using @include underline-tranisition(0.4).
+
+Process to build the Product Cards/Products component:
+    - create a _products.scss & index.js files in Products component folder.
