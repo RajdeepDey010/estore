@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express();
+const cors = require('cors');
 const productCategory = require('./routes/productCategory')
 
 const port = 1010
 
-app.use('/productCategory',productCategory)
+app.use(cors());
+app.use('/productCategory',productCategory);
 
 app.listen(port, () => {
 
