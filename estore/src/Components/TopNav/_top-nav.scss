@@ -79,3 +79,24 @@
     margin-top: 1.7em;
     margin-left: 1em;
   }
+
+  .list-icon{
+
+    .cart-item-count{
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      background-color: rgb(229, 255, 0);
+      position: absolute;
+      top: 2.2%;
+      left: 95.4%;
+      text-align: center;
+      line-height: 90%;
+
+      p{
+        font-size: 0.6em;
+        font-weight: 600;
+        color: black;
+      }
+    }
+  }

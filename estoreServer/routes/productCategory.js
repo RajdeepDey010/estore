@@ -30,4 +30,18 @@ productCategory.get("/", (req, res) => {
 
 })
 
+productCategory.get("/estoreProducts", (req,res) => {
+    let prodData;
+
+    pool.query("Select * from products", (err, products) => {
+        if(!err){
+            prodData = products;
+            res.status(200).send(prodData);
+        }
+        else{
+            res.status(500).send(err);
+        }
+    })
+})
+
 module.exports = productCategory;

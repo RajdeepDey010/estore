@@ -1,30 +1,53 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './_products.scss'
-import { useSelector } from 'react-redux'
-import productSlice from '../../Redux/Product/productSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../../Redux/Product/action';
+import { addCartItem } from '../../Redux/Cart/cartSlice';
 
 function Products() {
-    const productData = useSelector(productSlice.getInitialState);
+    const productData = useSelector(state => state.productReducer.products);
+    const cartData = useSelector(state => state.cartReducer);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getProducts())
+    }, []);
+    
+    function addToCart(item){
+        dispatch(addCartItem(item)); //we invoke the action method created inside the reducer of cartSlice.
+    }
+
+    console.log(cartData)
 
     return (
         <div className='products-container'>
             {
-                productData.map((items, key) => {
+                productData.map((productItem, key) => {
                     return (
                         <div className='mx-5 p-3 col-lg-3 col-md-6 product-card'>
                             <div className='product-image-container'>
-                                <img src={require('../../assets/shop/' + items.img)} alt={items.pName} />
+                                <img src={require('../../assets/shop/' + productItem.product_img)} alt={productItem.product_name} />
                             </div>
                             <div className='product-info'>
-                                <h5><a href="#">{items.pName}</a></h5>
+                                <h5><a href="#">{productItem.product_name}</a></h5>
                                 <br />
-                                <p className='product-price'>₹{items.price}</p>
+                                <p className='product-price'>₹{productItem.price}</p>
                                 <div className="product-rating">
-                                    <i className='fa fa-star'/>
-                                    <i className='fa fa-star'/>
-                                    <i className='fa fa-star'/>
-                                    <i className='fa fa-star'/>
-                                    <i className='fa fa-star'/>
+                                    <i className='fa fa-star' />
+                                    <i className='fa fa-star' />
+                                    <i className='fa fa-star' />
+                                    <i className='fa fa-star' />
+                                    <i className='fa fa-star' />
+                                </div>
+                            </div>
+                            <div className="my-3 cart-container" onClick={()=>addToCart(productItem)}>
+                                <div className="cart-btn">
+                                    <div className="cart-icon">
+                                        <i className="mx-4 fa fa-shopping-cart" />
+                                    </div>
+                                    <div className="cart-text">
+                                        <p>Add to Cart</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -43,5 +43,34 @@
                 color: gold;
             }
         }
+
+        .cart-btn{
+            display: flex;
+            justify-content: space-evenly;
+            border: 1px solid black;
+            border-radius: 1em;
+            margin-top: 1em;
+            width: 100%;
+            height: 2em;
+
+            .cart-icon{
+                padding: 0.3em;
+                width: 2em;
+                i{
+                    font-size: 1.2em;
+                }
+            }
+            .cart-text{
+                padding: 0.1em;
+                p{
+                    font-size: 1em;
+                    font-weight: 600;
+                }
+            }
+            &:hover{
+                cursor: pointer;
+                box-shadow: inset #dcdcdc 1px 2px 5px;
+            }
+        }
     }
 }
