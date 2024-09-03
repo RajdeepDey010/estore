@@ -10,5 +10,4 @@ export const store = configureStore({
       cartReducer: cartSlice
     }
   })
-
   

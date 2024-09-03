@@ -17,13 +17,14 @@ const cartSlice = createSlice({
         addCartItem: (state, action) => {
             let flg = state.cartItems.find((item) => item.id === action.payload.id);
 
-            state.cartItems = [...state.cartItems, action.payload];
-            state.totalPrice = state.totalPrice + action.payload.price;
-            state.totalQuantity = ++state.totalQuantity;
-
             if (!flg) {
+                state.cartItems = [...state.cartItems, action.payload];
+                state.totalPrice = state.totalPrice + action.payload.price;
+                state.totalQuantity = ++state.totalQuantity;
+
                 state.totalItems = ++state.totalItems;
             }
+            console.log(state.cartItems)
         }
     }
 })

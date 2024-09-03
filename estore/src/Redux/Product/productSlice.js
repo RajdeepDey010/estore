@@ -2,15 +2,33 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getProducts } from "./action";
 
 const initialState = {
-    products : [],
-    status : "idle",
-    error : ""
+    products: [],
+    status: "idle",
+    error: ""
 };
 
 const productSlice = createSlice({
-    name : "products",
+    name: "products",
     initialState,
-    reducers : {},
+    reducers: {
+        filterProducts: (state, action) => {
+
+            const tmpFilterData = action.payload.products.filter((ele) => {
+                return ele.category_id === action.payload.userFilterProd.id;
+            })
+
+            state.products = tmpFilterData;
+        },
+
+        filterPrice: (state, action) => {
+            
+            const tmpPriceFilter = action.payload.products.filter((ele) => {
+                return ele.price >= action.payload.minPrice && ele.price <= action.payload.maxPrice;
+            })
+
+            state.products = tmpPriceFilter;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getProducts.pending, (state) => {
@@ -27,4 +45,5 @@ const productSlice = createSlice({
     }
 })
 
+export const { filterProducts,filterPrice } = productSlice.actions;
 export default productSlice.reducer;
