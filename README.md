@@ -108,8 +108,6 @@ DB_NAME=estore
 JWT_SECRET=your_jwt_secret
 ```
 
-> ⚠️ Never commit your `.env` file to version control.
-
 ---
 
 ### Database Setup
