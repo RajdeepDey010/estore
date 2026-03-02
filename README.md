@@ -16,7 +16,6 @@ A full-stack ecommerce web application built with **ReactJS**, **Redux**, **Node
   - [Running the App](#running-the-app)
 - [Features](#features)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -153,7 +152,6 @@ The app will open at `http://localhost:3000`.
 - 🏠 Home page with product listings
 - 🔍 Product browsing and detail view
 - 🛒 Shopping cart with add/remove/update functionality
-- 🔐 User authentication (Register / Login)
 - 📦 Order management
 - 📱 Responsive design with SCSS
 
