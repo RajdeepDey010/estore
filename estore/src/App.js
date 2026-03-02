@@ -4,13 +4,15 @@ import Cart from './Components/Cart';
 import CatNav from './Components/CatNav/CatNav';
 import ProductDetails from './Components/ProductDetails';
 import TopNav from './Components/TopNav/TopNav';
-import { Routes,Route } from 'react-router-dom'; 
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <TopNav />
-      <CatNav />
+      <div className="header sticky-top">
+        <TopNav />
+        <CatNav />
+      </div>
       <Routes>
         <Route path="/" Component={LandingPage} />
         <Route path="/productdetails" Component={ProductDetails} />

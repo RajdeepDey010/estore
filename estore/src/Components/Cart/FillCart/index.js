@@ -1,16 +1,23 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { delCart, updateCart } from '../../../Redux/Cart/cartSlice'
 
 function FillCart() {
   const cart = useSelector(state => state.cartReducer)
+  const dispatch = useDispatch()
 
-  const quantityHandler = (e,item,key)=>{
-    if(e.target.innerText==="+"){
-      console.log("+1")
+  const quantityHandle = (e,item,key)=>{
+    
+    const payload = {
+      operation: e.target.innerText,
+      key,
+      item
     }
-    else if(e.target.innerText==="-"){
-      console.log("-1")
-    }
+    dispatch(updateCart(payload))
+  }
+
+  const delHandle = (item)=>{
+    dispatch(delCart(item))
   }
 
   return (
@@ -41,32 +48,35 @@ function FillCart() {
                     
                       <div>
                         <div className="btn-group mx-3">
-                          <div className='btn btn-outline-dark' onClick={(e) => quantityHandler(e,item,key)}>
+                          <div className='btn btn-outline-dark' onClick={(e) => quantityHandle(e,item,key)}>
                             <span> - </span>
                           </div>
                           <div className='btn'>
                             <span> {item.quantity} </span>
                           </div>
-                          <div className='btn btn-outline-dark' onClick={(e) => quantityHandler(e,item,key)}>
+                          <div className='btn btn-outline-dark' onClick={(e) => quantityHandle(e,item,key)}>
                             <span> + </span>
                           </div>
                         </div>
-                        <div className='btn btn-outline-danger mx-4'>
+                        <div className='btn btn-outline-danger mx-4' onClick={()=>delHandle(item)}>
                           <span><i className='fa fa-trash mx-2'/> Remove </span>
                         </div>
                       </div>
                     </div>
                   </div>
+                  <hr />
                 </div>
               )
             })
           }
         </div>
-
+          
         <div className="col-4 px-4 py-3 my-4 bg-wheat">
           <h2>Summary</h2>
           <div>
             <span>Cart Total : INR {cart.totalPrice}</span>
+            <br />
+            <span>Total Items : {cart.totalItems}</span>
             <br />
             <span>Shipping : Free</span>
             <hr />

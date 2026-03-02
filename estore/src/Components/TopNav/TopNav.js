@@ -10,7 +10,7 @@ function TopNav() {
   return (
     <div>
       <div className="header bg-dark">
-        <div className="row top-nav-row">
+        <div className="row top-nav-row mx-0">
           <div className='brand my-1'>
             <h1>eStore</h1>
           </div>
@@ -31,9 +31,6 @@ function TopNav() {
           </div>
           <div className="cart-wishlist">
             <ul className='p-0'>
-              <li className='list-icon'>
-                <i className='fa fa-heart' />
-              </li>
               <Link to='/cart'>
                 <li className='list-icon'>
                   <i className='fa fa-shopping-cart' />
